@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shammie the Digital Goat</title>
+    <style>
+        body {
+            background-color: #c8e6c9; /* Soft green */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        #goat-container {
+            margin-top: 50px;
+        }
+        #shammie {
+            width: 200px;
+            cursor: pointer;
+        }
+        #message {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2e7d32; /* Dark green */
+        }
+    </style>
+</head>
+<body>
+    <h1>Meet Shammie the Digital Goat! 🐐</h1>
+    <p>Click on Shammie for a surprise message!</p>
+    <div id="goat-container">
+        <img id="shammie" src="https://i.imgur.com/8p2tqFt.png" alt="Shammie the Goat">
+        <p id="message"></p>
+    </div>
+
+    <script>
+        const messages = [
+            "Lauren, you're the GOAT of recovery!",
+            "Shammie thinks you're the best human ever!",
+            "Drink water, eat snacks, and rest—Shammie commands it!",
+            "Bêêêêh! Récupère vite, Lauren!",
+            "Tu es plus forte qu’un bouc de montagne!",
+            "Goats can climb almost anything… but even Shammie can’t top your strength!"
+        ];
+
+        document.getElementById("shammie").addEventListener("click", function() {
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById("message").textContent = randomMessage;
+        });
+    </script>
+</body>
+</html>
