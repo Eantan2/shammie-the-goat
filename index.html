@@ -21,13 +21,14 @@
         }
         
         .card {
-            width: 300px;
-            height: 400px;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+            width: 350px;
+            height: 450px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
             position: relative;
             perspective: 1000px;
+            transition: transform 0.5s ease-in-out;
         }
         
         .card-inner {
@@ -49,17 +50,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 10px;
+            border-radius: 15px;
+            padding: 20px;
         }
         
         .card-front {
-            background: #f8f8f8;
+            background: #ffffff;
             cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .card-front img {
             width: 80%;
             border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
         
         .card-back {
@@ -70,15 +77,27 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
-            box-shadow: inset 0px 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0px 6px 12px rgba(0, 0, 0, 0.1);
         }
         
         #message {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: #1b5e20;
             text-align: center;
             margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            max-width: 80%;
+            transition: transform 0.5s ease-in-out, opacity 0.5s;
+            opacity: 0;
+        }
+
+        .show-message #message {
+            opacity: 1;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -87,6 +106,7 @@
         <div class="card-inner">
             <div class="card-front">
                 <img id="shammie" src="shammie1.jpg" alt="Shammie the Goat">
+                <p>Click to Open</p>
             </div>
             <div class="card-back">
                 <p id="message"></p>
@@ -108,6 +128,7 @@
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
             document.getElementById("message").textContent = randomMessage;
             this.classList.toggle("open");
+            this.classList.toggle("show-message");
         });
     </script>
 </body>
