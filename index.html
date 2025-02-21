@@ -6,22 +6,45 @@
     <title>Shammie the Digital Goat</title>
     <style>
         body {
-            background-color: #c8e6c9; /* Soft green */
+            background-color: #a8d5ba; /* Softer green */
             text-align: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
         #goat-container {
             margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         #shammie {
-            width: 200px;
+            width: 250px;
             cursor: pointer;
+            border-radius: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+        #shammie:hover {
+            transform: scale(1.1);
         }
         #message {
             margin-top: 20px;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
-            color: #2e7d32; /* Dark green */
+            color: #1b5e20; /* Darker green */
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 80%;
+        }
+        h1 {
+            font-size: 32px;
+            color: #2e7d32;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        p {
+            font-size: 18px;
+            color: #388e3c;
         }
     </style>
 </head>
@@ -29,7 +52,7 @@
     <h1>Meet Shammie the Digital Goat! 🐐</h1>
     <p>Click on Shammie for a surprise message!</p>
     <div id="goat-container">
-        <img id="shammie" src="https://i.imgur.com/8p2tqFt.png" alt="Shammie the Goat">
+        <img id="shammie" src="shammie 1.jpg" alt="Shammie the Goat">
         <p id="message"></p>
     </div>
 
