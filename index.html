@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
         body {
-            background: url('flowers1.avif') no-repeat center center fixed;
+            background: url('correct_background.avif') no-repeat center center fixed;
             background-size: cover;
             text-align: center;
             font-family: 'Pacifico', cursive;
@@ -23,9 +23,9 @@
         .card {
             width: 350px;
             height: 450px;
-            background: rgba(255, 255, 255, 0.9);
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             border-radius: 15px;
-            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
             position: relative;
             perspective: 1000px;
             transition: transform 0.5s ease-in-out;
@@ -55,7 +55,7 @@
         }
         
         .card-front {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -70,7 +70,7 @@
         }
         
         .card-back {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
@@ -124,9 +124,13 @@
             "Goats can climb almost anything… but even Shammie can’t top your strength!"
         ];
         
+        let messageIndex = 0;
+
         document.getElementById("shammie-card").addEventListener("click", function() {
-            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById("message").textContent = randomMessage;
+            if (!this.classList.contains("open")) {
+                messageIndex = (messageIndex + 1) % messages.length;
+                document.getElementById("message").textContent = messages[messageIndex];
+            }
             this.classList.toggle("open");
             this.classList.toggle("show-message");
         });
