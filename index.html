@@ -6,9 +6,10 @@
     <title>Shammie the Digital Goat</title>
     <style>
         body {
-            background-color: #a8d5ba; /* Softer green */
+            background-color: #a8d5ba;
             text-align: center;
             font-family: 'Comic Sans MS', cursive, sans-serif;
+            overflow: hidden;
         }
         #goat-container {
             margin-top: 50px;
@@ -26,16 +27,28 @@
         #shammie:hover {
             transform: scale(1.1);
         }
-        #message {
+        #message-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
             margin-top: 20px;
-            font-size: 24px;
+            background: url('envelope.png') no-repeat center center / contain;
+        }
+        #message {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
             font-weight: bold;
-            color: #1b5e20; /* Darker green */
-            background-color: rgba(255, 255, 255, 0.8);
+            color: #1b5e20;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 10px;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             max-width: 80%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
         h1 {
             font-size: 32px;
@@ -46,16 +59,35 @@
             font-size: 18px;
             color: #388e3c;
         }
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: url('wildflower.png') no-repeat center center / contain;
+            animation: floatUp 6s linear infinite;
+        }
+        @keyframes floatUp {
+            from {
+                transform: translateY(100vh);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(-10vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>Meet Shammie the Digital Goat! 🐐</h1>
     <p>Click on Shammie for a surprise message!</p>
     <div id="goat-container">
-        <img id="shammie" src="shammie 1.jpg" alt="Shammie the Goat">
-        <p id="message"></p>
+        <img id="shammie" src="shammie1.jpg" alt="Shammie the Goat">
+        <div id="message-container">
+            <p id="message"></p>
+        </div>
     </div>
-
+    
     <script>
         const messages = [
             "Lauren, you're the GOAT of recovery!",
@@ -65,11 +97,25 @@
             "Tu es plus forte qu’un bouc de montagne!",
             "Goats can climb almost anything… but even Shammie can’t top your strength!"
         ];
-
+        
         document.getElementById("shammie").addEventListener("click", function() {
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById("message").textContent = randomMessage;
+            const messageElement = document.getElementById("message");
+            messageElement.textContent = randomMessage;
+            messageElement.style.opacity = 1;
         });
+        
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower");
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.animationDuration = Math.random() * 3 + 3 + "s";
+            document.body.appendChild(flower);
+            setTimeout(() => {
+                flower.remove();
+            }, 6000);
+        }
+        setInterval(createFlower, 1000);
     </script>
 </body>
 </html>
