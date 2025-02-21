@@ -23,12 +23,14 @@
         .card {
             width: 350px;
             height: 450px;
-            background: linear-gradient(135deg, #A7C7E7 0%, #D4E157 100%);
+            background: #FDE2E4;
             border-radius: 15px;
             box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
             position: relative;
             perspective: 1000px;
             transition: transform 0.5s ease-in-out;
+            border: 5px solid #FFB6C1;
+            padding: 10px;
         }
         
         .card-inner {
@@ -36,6 +38,7 @@
             height: 100%;
             transform-style: preserve-3d;
             transition: transform 1s;
+            border-radius: 15px;
         }
         
         .card.open .card-inner {
@@ -52,15 +55,17 @@
             align-items: center;
             border-radius: 15px;
             padding: 20px;
+            border: 5px dashed #FFB6C1;
         }
         
         .card-front {
-            background: linear-gradient(135deg, #81C784 0%, #FFB74D 100%);
+            background: #FAD2E1;
             cursor: pointer;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            position: relative;
         }
         
         .card-front img {
@@ -69,8 +74,18 @@
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
         
+        .card-front::before, .card-back::before {
+            content: "❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤ ❤";
+            font-size: 18px;
+            color: #FF69B4;
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .card-back {
-            background: linear-gradient(135deg, #FFD54F 0%, #FF8A65 100%);
+            background: #F5CAC3;
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
@@ -98,6 +113,32 @@
         .show-message #message {
             opacity: 1;
             transform: scale(1.05);
+        }
+
+        /* Sparkle Animation */
+        .sparkle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+            animation: sparkleAnimation 2s infinite ease-in-out;
+        }
+        
+        @keyframes sparkleAnimation {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) translateY(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) translateY(-10px);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5) translateY(-20px);
+            }
         }
     </style>
 </head>
@@ -134,6 +175,18 @@
             this.classList.toggle("open");
             this.classList.toggle("show-message");
         });
+
+        function createSparkle() {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+            sparkle.style.left = Math.random() * 100 + "vw";
+            sparkle.style.top = Math.random() * 100 + "vh";
+            document.body.appendChild(sparkle);
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+        setInterval(createSparkle, 500);
     </script>
 </body>
 </html>
