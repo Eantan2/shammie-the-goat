@@ -30,6 +30,9 @@
             perspective: 1000px;
             transition: transform 0.5s ease-in-out;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
         
         .card-inner {
@@ -54,7 +57,7 @@
             justify-content: center;
             align-items: center;
             border-radius: 15px;
-            padding: 0;
+            padding: 20px;
         }
         
         .card-front {
@@ -66,14 +69,14 @@
             justify-content: center;
             border-radius: 15px;
             position: relative;
-            padding-top: 40px;
+            padding-top: 20px;
         }
         
         .card-front img {
             width: 85%;
             border-radius: 15px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .card-back {
@@ -86,6 +89,8 @@
             padding: 20px;
             box-shadow: inset 0px 6px 12px rgba(0, 0, 0, 0.1);
             border-radius: 15px;
+            position: absolute;
+            top: 0;
         }
         
         #message {
